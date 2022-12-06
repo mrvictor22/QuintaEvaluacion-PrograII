@@ -1,0 +1,43 @@
+﻿
+@{
+    bool isLogged = (Session["isAuth"] as bool?) ?? false;
+    string requestedController = HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString();
+}
+
+<nav class="navbar navbar-expand-lg bg-light">
+    <div class="container">
+        @Html.ActionLink("Adventure Works", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        @if (isLogged)
+        {
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link active", area_current = "page" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Gallery", "Index", "Home", new { area = "" }, new { @class = "nav-link", area_current = "page" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Add Photo", "Index", "Home", new { area = "" }, new { @class = "nav-link", area_current = "page" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Presentation", "Index", "Home", new { area = "" }, new { @class = "nav-link", area_current = "page" })
+                    </li>
+                </ul>
+            </div>
+        }
+        else
+        {
+            <form class="container-fluid justify-content-end">
+                <div class="d-flex justify-content-end">
+                    @Html.ActionLink("Sign In", "SignIn", "Auth", new { area = "" }, new { @class = "btn btn-sm btn-outline-dark mx-1" })
+                    @Html.ActionLink("Sign Up", "SignUp", "Auth", new { area = "" }, new { @class = "btn btn-sm btn-outline-primary mx-1" })
+                </div>
+            </form>
+        }
+
+    </div>
+</nav>
