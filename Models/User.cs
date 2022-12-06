@@ -11,7 +11,8 @@ namespace QuintaEvaluacion.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+
     public partial class User
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,10 +23,20 @@ namespace QuintaEvaluacion.Models
         }
     
         public int Id { get; set; }
+
+        [DisplayName("First Name")]
         public string FirstName { get; set; }
+
+        [DisplayName("Last Name")]
         public string LastName { get; set; }
+
+        [DisplayName("Username")]
         public string UserName { get; set; }
+
+        [DisplayName("Email")]
         public string Email { get; set; }
+
+        [DisplayName("Password")]
         public string Password { get; set; }
         public string ProfilePicture { get; set; }
         public byte[] CreatedAt { get; set; }
