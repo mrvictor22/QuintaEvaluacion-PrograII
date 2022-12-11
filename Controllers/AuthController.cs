@@ -60,7 +60,7 @@ namespace QuintaEvaluacion.Controllers
             {
                 string encriptedPassword = EncodePasswordToBase64(user.Password);
                 user.Password = encriptedPassword;
-                user.CreatedAt = DateTime.UtcNow;
+                user.CreatedAt = DateTime.Now;
                 db.Users.Add(user);
                 await db.SaveChangesAsync();
                 Session["isAuth"] = true;
@@ -105,63 +105,6 @@ namespace QuintaEvaluacion.Controllers
 
             return RedirectToAction("Index", "Home");
         }
-
-        // GET: Auth/Edit/5
-        //public async Task<ActionResult> Edit(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    User user = await db.Users.FindAsync(id);
-        //    if (user == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(user);
-        //}
-
-        //// POST: Auth/Edit/5
-        //// To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        //// more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<ActionResult> Edit([Bind(Include = "Id,FirstName,LastName,UserName,Email,Password,ProfilePicture,CreatedAt,UpdatedAt")] User user)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        db.Entry(user).State = EntityState.Modified;
-        //        await db.SaveChangesAsync();
-        //        return RedirectToAction("Index");
-        //    }
-        //    return View(user);
-        //}
-
-        //// GET: Auth/Delete/5
-        //public async Task<ActionResult> Delete(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    User user = await db.Users.FindAsync(id);
-        //    if (user == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(user);
-        //}
-
-        //// POST: Auth/Delete/5
-        //[HttpPost, ActionName("Delete")]
-        //[ValidateAntiForgeryToken]
-        //public async Task<ActionResult> DeleteConfirmed(int id)
-        //{
-        //    User user = await db.Users.FindAsync(id);
-        //    db.Users.Remove(user);
-        //    await db.SaveChangesAsync();
-        //    return RedirectToAction("Index");
-        //}
 
         //this function Convert to Encord your Password
         private string EncodePasswordToBase64(string password)

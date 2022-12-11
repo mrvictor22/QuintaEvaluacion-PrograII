@@ -5,9 +5,9 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="36adf6ca7ecf4cb7b15f332457ea1a74" Name="Diagram1">
-        <EntityTypeShape EntityType="adventure_works_dbModel.Comment" Width="1.5" PointX="5.25" PointY="3" />
-        <EntityTypeShape EntityType="adventure_works_dbModel.Photo" Width="1.5" PointX="3" PointY="2.75" />
         <EntityTypeShape EntityType="adventure_works_dbModel.User" Width="1.5" PointX="0.75" PointY="2.75" />
+        <EntityTypeShape EntityType="adventure_works_dbModel.Comment" Width="1.5" PointX="5.25" PointY="4.625" />
+        <EntityTypeShape EntityType="adventure_works_dbModel.Photo" Width="1.5" PointX="3" PointY="6.125" />
         <AssociationConnector Association="adventure_works_dbModel.Comments_UserPhotos_null_fk" />
         <AssociationConnector Association="adventure_works_dbModel.Comments_Users_null_fk" />
         <AssociationConnector Association="adventure_works_dbModel.UserPhotos_Users_null_fk" />

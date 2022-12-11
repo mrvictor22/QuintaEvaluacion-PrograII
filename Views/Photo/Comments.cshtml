@@ -1,0 +1,57 @@
+﻿@model QuintaEvaluacion.Models.Photo
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    bool isLogged = (Session["isAuth"] as bool?) ?? false;
+}
+
+<div class="row mx-4 my-3">
+    <div>
+        <p class="mx-0 px-0 fs-6">Image added by <strong>@Model.User.UserName</strong></p>
+    </div>
+    <div class="card mb-3 px-0">
+        <img src="@(String.Format("/Uploads/{0}/{1}", Model.UserId, Model.Slug))" class="" alt="@Model.Slug">
+        <div class="card-body">
+            <h5 class="card-title">@Model.Title</h5>
+            <p class="card-text">@Model.Description</p>
+            <p class="card-text"><small class="text-muted">Created at @Model.CreatedAt.ToString("MMMM dd, HH:mm", System.Globalization.CultureInfo.InvariantCulture)</small></p>
+        </div>
+    </div>
+
+    <div>
+        <p class="fw-semibold">Comments:</p>
+        @if (isLogged)
+        {
+            using (Html.BeginForm("Comment", "Photo", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                <input type="hidden" name="id" value="@Model.Id" />
+                <div class="form-comments mb-4">
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Title</label>
+                        <input type="text" class="form-control" id="title" name="title" placeholder="Add title">
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Comment</label>
+                        <textarea class="form-control" id="description" rows="3" name="description"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Add</button>
+                </div>
+            }
+        }
+        @if (Model.Comments.Count() == 0)
+        {
+            <p>No comments yet...</p>
+        }
+        else
+        {
+            foreach(var comment in Model.Comments)
+            {
+                Html.RenderPartial("_Comment", comment);
+            }
+        }
+
+
+    </div>
+</div>

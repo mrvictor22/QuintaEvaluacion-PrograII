@@ -1,0 +1,12 @@
+﻿@model QuintaEvaluacion.Models.Photo
+
+
+<div class="card mb-3">
+    <img src="@(String.Format("/Uploads/{0}/{1}", Model.UserId, Model.Slug))" class="card-img-top" alt="@Model.Slug">
+    <div class="card-body">
+        <h5 class="card-title">@Model.Title</h5>
+        <p class="card-text">@Model.Description</p>
+        <p class="card-text"><small class="text-muted">Created at @Model.CreatedAt.ToString("MMMM dd, HH:mm", System.Globalization.CultureInfo.InvariantCulture)</small></p>
+        <a href="@(String.Format("/Photo/Comments/{0}", Model.Id))" class="card-link">Comments</a>
+    </div>
+</div>

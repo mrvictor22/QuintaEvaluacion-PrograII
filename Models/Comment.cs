@@ -19,7 +19,7 @@ namespace QuintaEvaluacion.Models
         public string Content { get; set; }
         public int UserId { get; set; }
         public int PhotoId { get; set; }
-        public byte[] CreatedAt { get; set; }
+        public Nullable<System.DateTime> CreatedAt { get; set; }
     
         public virtual Photo Photo { get; set; }
         public virtual User User { get; set; }

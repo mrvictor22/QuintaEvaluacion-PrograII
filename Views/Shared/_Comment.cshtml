@@ -1,0 +1,28 @@
+﻿@model QuintaEvaluacion.Models.Comment
+@{
+    bool isLogged = (Session["isAuth"] as bool?) ?? false;
+    int userId = (Session["user_id"] as int?) ?? 0;
+}
+
+@if (isLogged && userId == Model.UserId)
+{
+    <div class="card text-end w-75">
+        <div class="card-body">
+            <p class="fw-semibold">@Model.Title</p>
+            <p class="text-break mb-2">@Model.Content</p>
+
+            <p class="fw-lighter"><small>-- Comment by <strong>@Model.User.UserName</strong></small></p>
+        </div>
+    </div>
+}
+else
+{
+    <div class="card w-75">
+        <div class="card-body">
+            <p class="fw-semibold">@Model.Title</p>
+            <p class="text-break mb-2">@Model.Content</p>
+
+            <p class="fw-lighter"><small>- Comment by <strong>@Model.User.UserName</strong></small></p>
+        </div>
+    </div>
+}

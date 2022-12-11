@@ -1,0 +1,37 @@
+﻿@model QuintaEvaluacion.Data.PhotoModel
+
+@using (Html.BeginForm("Create", "Photo", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <h1 class="fs-3 mb-4 fw-light text-center">Add a new photo</h1>
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+    <div class="form-group row mb-3">
+        @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "form-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.Image, new { htmlAttributes = new { @class = "form-control" }, type = "file" })
+            @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "form-label" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group row mb-3">
+        @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <button class="w-100 mt-3 btn btn-outline-primary" type="submit">Upload</button>
+
+}
+

@@ -25,7 +25,7 @@ namespace QuintaEvaluacion.Models
         public string Description { get; set; }
         public string Slug { get; set; }
         public int UserId { get; set; }
-        public byte[] CreatedAt { get; set; }
+        public System.DateTime CreatedAt { get; set; }
         public Nullable<System.DateTime> UpdatedAt { get; set; }
         public Nullable<System.DateTime> DeletedAt { get; set; }
     
