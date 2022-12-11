@@ -12,6 +12,8 @@ namespace QuintaEvaluacion.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     public partial class User
     {
@@ -21,25 +23,38 @@ namespace QuintaEvaluacion.Models
             this.Comments = new HashSet<Comment>();
             this.Photos = new HashSet<Photo>();
         }
-    
+
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         [DisplayName("First Name")]
+        [Required]
         public string FirstName { get; set; }
 
         [DisplayName("Last Name")]
+        [Required]
         public string LastName { get; set; }
 
         [DisplayName("Username")]
+        [Required]
+        [Index(IsUnique = true)]
         public string UserName { get; set; }
 
         [DisplayName("Email")]
+        [Required]
+        [Index(IsUnique = true)]
         public string Email { get; set; }
 
         [DisplayName("Password")]
+        [Required]
+        [MinLength(6)]
+        [MaxLength(20)]
         public string Password { get; set; }
         public string ProfilePicture { get; set; }
-        public byte[] CreatedAt { get; set; }
+
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        public DateTime CreatedAt { get; set; }
         public Nullable<System.DateTime> UpdatedAt { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

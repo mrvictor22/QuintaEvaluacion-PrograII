@@ -1,15 +1,17 @@
 ﻿<div class="form-signin w-100 m-auto">
-    <form>
+    @using (Html.BeginForm("LogIn", "Auth"))
+    {
         <h1 class="fs-3 mb-4 fw-light text-center">Hello Again!</h1>
+        @Html.AntiForgeryToken()
 
         <div class="form-floating">
-            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-            <label for="floatingInput">Email or username</label>
+            <input type="text" class="form-control" id="username" placeholder="name@example.com" name="username">
+            <label for="username">Email or username</label>
         </div>
         <div class="form-floating">
-            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-            <label for="floatingPassword">Password</label>
+            <input type="password" class="form-control" id="password" placeholder="Password" name="password">
+            <label for="password">Password</label>
         </div>
-        <button class="w-100 mt-3 btn btn-outline-primary" type="submit">Sign in</button> 
-    </form>
+        <button class="w-100 mt-3 btn btn-outline-primary" type="submit">Sign in</button>
+    }
 </div>

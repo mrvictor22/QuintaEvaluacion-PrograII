@@ -23,10 +23,10 @@
                     <li class="nav-item">
                         @Html.ActionLink("Add Photo", "Index", "Home", new { area = "" }, new { @class = "nav-link", area_current = "page" })
                     </li>
-                    <li class="nav-item">
-                        @Html.ActionLink("Presentation", "Index", "Home", new { area = "" }, new { @class = "nav-link", area_current = "page" })
-                    </li>
                 </ul>
+                <div class="d-flex justify-content-end">
+                    @Html.ActionLink("Sign Out", "SignOut", "Auth", new { area = "" }, new { @class = "btn btn-sm btn-outline-danger mx-1" })
+                </div>
             </div>
         }
         else
