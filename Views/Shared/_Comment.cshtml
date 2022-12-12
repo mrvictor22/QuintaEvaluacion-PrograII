@@ -6,24 +6,24 @@
     string createdAt = "";
     if(Model.CreatedAt != null)
     {
-        createdAt = Model.CreatedAt?.ToString(System.Globalization.CultureInfo.InvariantCulture);
+        createdAt = Model.CreatedAt?.ToString("MMMM dd, HH:mm", System.Globalization.CultureInfo.InvariantCulture);
     }
 }
 
 @if (isLogged && userId == Model.UserId)
 {
-    <div class="card text-end w-100">
+    <div class="card text-end w-100 mb-3">
         <div class="card-body">
             <p class="fw-semibold">@Model.Title</p>
             <p class="text-break mb-2">@Model.Content</p>
 
-            <p class="fw-lighter"><small>-- Comment by <strong>@Model.User.UserName</strong></small></p>
+            <p class="fw-lighter"><small>-- Comment by <strong>@Model.User.UserName</strong> at @createdAt</small></p>
         </div>
     </div>
 }
 else
 {
-    <div class="card w-100">
+    <div class="card w-100 mb-3">
         <div class="card-body">
             <p class="fw-semibold">@Model.Title</p>
             <p class="text-break mb-2">@Model.Content</p>
