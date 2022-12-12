@@ -14,7 +14,7 @@ namespace QuintaEvaluacion.Controllers
 
         public ActionResult Index()
         {
-            var photos = db.Photos.ToList().Where(m => m.CreatedAt.DayOfYear == DateTime.Now.DayOfYear).ToList();
+            var photos = db.Photos.ToList().ToList();
             return View(photos);
         }
 
