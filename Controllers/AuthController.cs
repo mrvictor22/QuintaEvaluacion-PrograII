@@ -80,22 +80,17 @@ namespace QuintaEvaluacion.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> LogIn(string username, string password)
         {
-            var decodedPassword = DecodeFrom64(password);
+            var encodedPassword = EncodePasswordToBase64(password);
             if (password == null || username == null)
             {
                 return View("~/Views/Auth/SignIn.cshtml");
             }
-            var user = await db.Users.FirstAsync(u => u.Email == username || u.UserName == username && u.Password == decodedPassword);
+            var user = await db.Users.FirstAsync(u => u.Email == username || u.UserName == username && u.Password == encodedPassword);
             if(user.Id <= 0)
             {
                 return View("~/Views/Auth/SignIn.cshtml");
             }
 
-
-            if(password != decodedPassword)
-            {
-                return View("~/Views/Auth/SignIn.cshtml");
-            }
 
             Session["isAuth"] = true;
             Session["user_id"] = user.Id;
