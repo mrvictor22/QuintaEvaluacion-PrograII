@@ -1,7 +1,7 @@
 ﻿@model QuintaEvaluacion.Models.Photo
 
 
-<div class="card mb-3">
+<div class="card mb-3 border-0 shadow">
     <img src="@(String.Format("/Uploads/{0}/{1}", Model.UserId, Model.Slug))" class="card-img-top" alt="@Model.Slug">
     <div class="card-body">
         <h5 class="card-title">@Model.Title</h5>

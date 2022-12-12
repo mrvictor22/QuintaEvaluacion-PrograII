@@ -9,7 +9,7 @@
     <div>
         <p class="mx-0 px-0 fs-6">Image added by <strong>@Model.User.UserName</strong></p>
     </div>
-    <div class="card mb-3 px-0">
+    <div class="card mb-3 px-0 border-0 shadow">
         <img src="@(String.Format("/Uploads/{0}/{1}", Model.UserId, Model.Slug))" class="" alt="@Model.Slug">
         <div class="card-body">
             <h5 class="card-title">@Model.Title</h5>
