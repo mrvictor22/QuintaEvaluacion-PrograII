@@ -53,16 +53,7 @@ namespace QuintaEvaluacion.Controllers
 
             return RedirectToAction("Index", "Home");
         }
-
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Photo photo = db.Photos.Find(id);
-            db.Photos.Remove(photo);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
+                
         // GET: Photos/Details/5
         public ActionResult Comments(int? id)
         {
@@ -87,7 +78,8 @@ namespace QuintaEvaluacion.Controllers
                 Title = title,
                 Content = description,
                 PhotoId = id,
-                UserId = userId
+                UserId = userId,
+                CreatedAt = DateTime.Now
             };
             db.Comments.Add(comment);
             await db.SaveChangesAsync();
